@@ -1,6 +1,17 @@
-const express = require("express")
+const express = require('express')
+const cors = require('cors')
+const routes = require('./routes')
+
 const app = express()
 
-app.get("/", (req, res) => res.send("Welcome!!!"))
+app.use(cors())
+app.use(express.json())
+app.use(routes)
 
-app.listen(3333, () => console.log("Server is running"))
+// Adding generic catch
+app.use((error, req, res, next) => {
+    res.status(error.status || 500)
+    res.json({ error: error.message })
+})
+
+module.exports = app
