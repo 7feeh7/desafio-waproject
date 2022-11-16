@@ -2,10 +2,9 @@ const mongoose = require('mongoose');
 const Film = require('../models/Film')
 
 exports.create = async (data) => {
-    const film = new Film(data)
-    return await film.save()
+    return Film.create(data)
 }
 
 exports.getAllFilms = async () => {
-    return await Film.find()
+    return Film.find()
 }

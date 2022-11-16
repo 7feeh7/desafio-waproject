@@ -10,14 +10,12 @@ const saveDataApiExternal = async () => {
     if (dbFilms.length === 0) {
         const response = await axios.get(apiFilms)
 
-
         const films = response.data
-
 
         for await (const film of films) {
             const { title, movie_banner, description, director, producer } = film
 
-            await Film.create({
+            await filmRepo.create({
                 title,
                 banner: movie_banner,
                 description,
@@ -25,7 +23,7 @@ const saveDataApiExternal = async () => {
                 producer
             })
         }
-    } 
+    }
 }
 
 module.exports = saveDataApiExternal
