@@ -1,7 +1,8 @@
-const express = require('express')
+const { Router } = require('express')
 const axios = require('axios')
+const Film = require('./models/Film')
 
-const routes = express.Router()
+const routes = Router()
 
 const apiFilms = 'https://ghibliapi.herokuapp.com/films'
 
@@ -10,18 +11,20 @@ routes.get('/films', async (req, res) => {
 
     const films = response.data
 
-    // console.log(films)
 
-    for (const film of films) {
+    for await (const film of films) {
         const { title, movie_banner, description, director, producer } = film
-        console.log('title', title)
-        console.log('description', description)
-        console.log('director', director)
-        console.log('producer', producer)
-        console.log('movie_banner', movie_banner)
+        
+        await Film.create({
+            title, 
+            banner: movie_banner, 
+            description, 
+            director, 
+            producer
+        })
     }
     
-    return res.send("Searching")
+    return res.send("Cadastrado")
 })
 
 module.exports = routes
