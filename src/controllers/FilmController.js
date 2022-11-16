@@ -1,5 +1,3 @@
-const mongoose = require('mongoose');
-
 const Film = require('../models/Film');
 
 module.exports = {
