@@ -11,13 +11,11 @@ mongoose.connect(process.env.MONGODB)
 app.use(express.json())
 
 // Enable CORS
-app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*')
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, x-access-token')
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-    app.use(cors())
-    next()
-})
+app.use(cors())
+
+const extenalData = require('./api-data')
+
+setTimeout(()=> { extenalData() }, 300)
 
 app.use(routes)
 
