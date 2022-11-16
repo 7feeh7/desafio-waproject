@@ -1,29 +1,30 @@
-const axios = require('axios')
+const axios = require('axios');
+const mongoose = require('mongoose');
 
-const filmRepo = require('../repositories/film')
+const Film = require('../models/Film');
 
-const apiFilms = 'https://ghibliapi.herokuapp.com/films'
+const apiFilms = 'https://ghibliapi.herokuapp.com/films';
 
 const saveDataApiExternal = async () => {
-    const dbFilms = await filmRepo.getAllFilms() || []
+    const dbFilms = await Film.find() || [];
 
     if (dbFilms.length === 0) {
-        const response = await axios.get(apiFilms)
+        const response = await axios.get(apiFilms);
 
-        const films = response.data
+        const films = response.data;
 
         for await (const film of films) {
-            const { title, movie_banner, description, director, producer } = film
+            const { title, movie_banner, description, director, producer } = film;
 
-            await filmRepo.create({
+            await Film.create({
                 title,
                 banner: movie_banner,
                 description,
                 director,
                 producer
-            })
+            });
         }
     }
 }
 
-module.exports = saveDataApiExternal
+module.exports = saveDataApiExternal;
