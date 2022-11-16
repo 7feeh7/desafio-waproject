@@ -10,12 +10,15 @@ routes.get('/films', async (req, res) => {
 
     const films = response.data
 
+    // console.log(films)
+
     for (const film of films) {
-        const { title, description, director, producer } = film
+        const { title, movie_banner, description, director, producer } = film
         console.log('title', title)
         console.log('description', description)
         console.log('director', director)
         console.log('producer', producer)
+        console.log('movie_banner', movie_banner)
     }
     
     return res.send("Searching")
