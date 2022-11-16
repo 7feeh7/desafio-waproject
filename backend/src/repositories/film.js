@@ -5,6 +5,6 @@ exports.create = async (data) => {
     return Film.create(data)
 }
 
-exports.getAllFilms = async () => {
-    return Film.find()
+exports.getAllFilms = async (perPage, page) => {
+    return Film.find().skip(perPage * page).limit(perPage)
 }

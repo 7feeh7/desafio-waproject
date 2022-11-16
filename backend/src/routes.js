@@ -1,9 +1,8 @@
 const { Router } = require('express')
+const FilmController = require('./controllers/FilmController')
 
 const routes = Router()
 
-routes.get('/films', async (req, res) => {
-    return res.send("Cadastrado")
-})
+routes.get('/films', FilmController.index)
 
 module.exports = routes
