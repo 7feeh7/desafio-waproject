@@ -11,7 +11,7 @@ mongoose.connect(process.env.MONGODB);
 app.use(express.json());
 
 // Enable CORS
-app.use(cors({ exposedHeaders: 'Authorization' }));
+app.use(cors({ exposedHeaders: 'X-Total-Count' }));
 
 const extenalData = require('./api-data');
 
