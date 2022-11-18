@@ -4,5 +4,6 @@ const FilmController = require('./controllers/FilmController');
 const routes = Router();
 
 routes.get('/films', FilmController.index);
+routes.post('/films/update', FilmController.update);
 
 module.exports = routes;

@@ -13,9 +13,9 @@ app.use(express.json());
 // Enable CORS
 app.use(cors({ exposedHeaders: 'X-Total-Count' }));
 
-const extenalData = require('./api-data');
+const { saveDataApiExternal: extenalData } = require('./api-data');
 
-if(process.env.NODE_ENV !== 'test') setTimeout(()=> { extenalData() }, 300);
+setTimeout(()=> { extenalData() }, 300);
 
 app.use(routes);
 
