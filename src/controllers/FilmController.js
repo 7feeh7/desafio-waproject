@@ -22,7 +22,7 @@ module.exports = {
         const { update_all } = req.body;
 
         if (!update_all) {
-            return res.status(400);
+            return res.status(400).send();
         }
 
         const films = await getDataApiExternal() || [];
