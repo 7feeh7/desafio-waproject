@@ -1,12 +1,19 @@
 # studio-ghibli-backend
 
 Api desenvolvida para ser um catálogo de filmes com informações básicas de título, descrição, diretor e produtor.
+Para acessar o link da API publicada no HEROKU, [clique aqui](https://studio-ghibli-backend.herokuapp.com/films).
 
 ## Features
 - [x] Consultar API externa de filmes e extrair informações de título, banner, descrição, diretor e produtor.
 - [x] Salvar informações em um banco de dados
 - [x] Consulta de filmes com paginação
 - [x] Atualizar base
+
+## Tecnologias 
+- [Node.js](https://nodejs.org/en/)
+- [Express](https://expressjs.com/pt-br/)
+- [Axios](https://github.com/axios/axios)
+- [Jest](https://jestjs.io/pt-BR/)
 
 ## Começando
 > OBS: E NECESSARIO ESTÁ COM UM GERENCIADOR DE PACOTES SENDO O YARN OU NPM INSTALADO NA MÁQUINA
@@ -22,11 +29,11 @@ $ npm install
 
 ### Rodando
 ```
-$ yarn start
+$ yarn dev
 ```
 or
 ```
-$ npm start
+$ npm run dev
 ```
 
 ## Documentação
