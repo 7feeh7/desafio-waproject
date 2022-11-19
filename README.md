@@ -13,6 +13,7 @@ Para acessar o link da API publicada no HEROKU, [clique aqui](https://studio-ghi
 - [Node.js](https://nodejs.org/en/)
 - [Express](https://expressjs.com/pt-br/)
 - [Axios](https://github.com/axios/axios)
+- [MongoDb](https://www.mongodb.com/)
 - [Jest](https://jestjs.io/pt-BR/)
 
 ## Começando
@@ -28,6 +29,7 @@ $ npm install
 ```
 
 ### Rodando
+> OBS: E NECESSARIO CONFIGURAR UM ARQUIVO .ENV COM A STRING DE CONEXAO COM O MONGODB, CONFORME O ENV.EXAMPLE
 ```
 $ yarn dev
 ```
