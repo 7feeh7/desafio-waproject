@@ -3,7 +3,9 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const routes = require('./routes');
 
-require('dotenv').config();
+require('dotenv').config({
+    path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env'
+});
 
 const app = express();
 
