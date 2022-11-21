@@ -1,38 +1,40 @@
-const Film = require('../models/Film');
+const repository = require('../repositories/film-repository');
 
-const { saveDataApiExternal, getDataApiExternal } = require('../api-data');
+const { getDataApiExternal } = require('../api-data');
 
 module.exports = {
-    async index(req, res) {
-        const { page = 1 } = req.query;
+  async index(req, res, next) {
+    try {
+      const { page = 1, perPage = 10 } = req.query;
 
-        const perPage = 10
+      const films = await repository.getAllBooks(page, perPage);
+      const count = await repository.countBooks();
 
-        const films = await Film.find()
-            .skip((page - 1) * perPage)
-            .limit(perPage);
+      res.header('X-Total-Count', count);
 
-        const count = await Film.find().count();
-
-        res.header('X-Total-Count', count);
-
-        return res.status(200).json(films);
-    },
-    async update(req, res) {
-        const { update_all } = req.body;
-
-        if (!update_all) {
-            return res.status(400).send();
-        }
-
-        const films = await getDataApiExternal() || [];
-
-        if (films.length !== 0) {
-            await Film.deleteMany({});
-            await saveDataApiExternal();
-        }
-
-        return res.status(202).send();
-
+      return res.status(200).json(films);
+    } catch (err) {
+      next(err)
     }
+  },
+  async update(req, res, next) {
+    try {
+      const films = await getDataApiExternal() || [];
+
+      if (films.length !== 0) {
+        await repository.deleteAllBooks();
+
+        for await (const film of films) {
+          const { title, movie_banner, description, director, producer } = film;
+
+          await repository.create({ title, banner: movie_banner, description, director, producer });
+        }
+      }
+
+      return res.status(200).json();
+    } catch (err) {
+      next(err)
+    }
+
+  }
 }

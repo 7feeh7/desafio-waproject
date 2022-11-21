@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const routes = require('./routes');
+
 require('dotenv').config();
 
 const app = express();
@@ -13,9 +14,14 @@ app.use(express.json());
 // Enable CORS
 app.use(cors({ exposedHeaders: 'X-Total-Count' }));
 
-const { saveDataApiExternal: extenalData } = require('./api-data');
+app.get('/', (req, res, next) => res.status(200).send({ 
+    title: "studio-ghibli-backend",
+    version: "1.0.1" 
+}));
 
-setTimeout(()=> { extenalData() }, 300);
+const { saveDataApiExternal } = require('./api-data');
+
+if(process.env.NODE_ENV !== 'test') setTimeout(() => { saveDataApiExternal() }, 300);
 
 app.use(routes);
 

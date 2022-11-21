@@ -39,4 +39,4 @@ $ npm run dev
 ```
 
 ## Documentação
-Para mais detalhes sobre as rotas do projeto, [clique aqui.](https://documenter.postman.com/preview/15611768-1ffba950-fd5c-4860-bd80-3b2b6309d5e0?versionTag=latest&apiName=CURRENT&version=latest&top-bar=FFFFFF&right-sidebar=303030&highlight=EF5B25&environment=15611768-a7a7efb0-c877-4c6e-9a6c-4c6d03825a90&documentationLayout=classic-double-column)
+Para mais detalhes sobre as rotas do projeto, [clique aqui.](https://documenter.getpostman.com/view/15611768/2s8YmUKeMx)
