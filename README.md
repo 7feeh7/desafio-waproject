@@ -28,7 +28,9 @@ or
 $ npm install
 ```
 
-### Rodando
+## Executando
+
+### Projeto
 > OBS: E NECESSARIO CONFIGURAR UM ARQUIVO .ENV COM A STRING DE CONEXAO COM O MONGODB, CONFORME O ENV.EXAMPLE
 ```
 $ yarn dev
@@ -36,6 +38,16 @@ $ yarn dev
 or
 ```
 $ npm run dev
+```
+
+### Testes
+> OBS: E NECESSARIO CONFIGURAR UM ARQUIVO .ENV.TEST COM A STRING DE CONEXAO LOCAL, COM O MONGODB, CONFORME O ENV.EXAMPLE
+```
+$ yarn test
+```
+or
+```
+$ npm run test
 ```
 
 ## Documentação
